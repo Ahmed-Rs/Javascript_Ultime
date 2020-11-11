@@ -1,20 +1,22 @@
-/* Paramètres par défaut */
+/* Conversion de données */
 
+function prévoirAge() {
 
-
-
-function cuisiner(nbGateaux, nbPreparation = 10, nbCuisson = 15) {          // On déclare ici 2 param. par défaut
-    
-    let total = nbGateaux * (nbPreparation + nbCuisson);
-    return total;
-    
+    let age = prompt("Quel age avez vous?");            // Javascript stock les informations recueillies chez les utilisateurs sous forme de string.
+    // age = parseInt(age);                                // La var. age a été transformée en entier le plus proche, de sorte à ce que l'addition se déroule bien dans le alert(); 
+    // age = parseFloat(age);                              // Cette méthode permet de conserver le nombre tel quel, même avec virgule.
+    age = Number(age);                                     // La solution number(); est la plus sûre.
+    alert("Bientôt vous aurez " + (age + 1) + " ans.");
 }
 
-let tChocolat = cuisiner(4);                          // Temps de péparation de 4 gâteaux au chocolat.
-let tFraisier = cuisiner(1, 20);                      // t prép. 1 fraisier. On modifier respectivement les valeurs souhaitées.  
-
-console.log(tFraisier + tChocolat);
+prévoirAge();
 
 
 
+/* Convertir un nombre en string
 
+nb = 45;
+let nbEnString = nb + "";               // Cette 1ère méthode permet de convertir le nombre en chaîne de caractères.
+let nbEnString = nb.toString();         // La 2e méthode consiste à utiliser la fct. toString().
+
+*/
