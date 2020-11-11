@@ -1,19 +1,30 @@
-/* Variables locales et globales*/
+/* Fonctions qui retournent qqch */
 
-let cri = "Toujours plus bas!";      // Globale
 
-function criDeGuerre() {
+let nb1 = 4, nb2 = 7;
 
-    let cri = "Toujours plus fort!"; // Locale
-    console.log(cri); 
+
+function addition(nbA, nbB) {
+    
+    let total = nbA + nbB;
+    // console.log(total);      // Affiche un resultat.
+    return total;               // La fct. RETOURNE une valeur.
+    console.log('test');        // NB: Tout le code écrit après return; ne sera pas exécuté.
 
 }
 
-criDeGuerre();                      // La fct. n'affichera en priorité sa variable locale.
+function division(nbA, nbB) {
+    
+    let total = nbA / nbB;
+    return total;  
+                 
+}
 
-console.log(cri);                   // La console affichera la var. globale.
 
+let resultatAddition = addition(nb1, nb2);
+let resultatDivision = division(nb1, nb2);
 
+console.log(resultatAddition * resultatDivision);
 
 
 
