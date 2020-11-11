@@ -1,30 +1,19 @@
-/* Fonctions qui retournent qqch */
+/* Paramètres par défaut */
 
 
-let nb1 = 4, nb2 = 7;
 
 
-function addition(nbA, nbB) {
+function cuisiner(nbGateaux, nbPreparation = 10, nbCuisson = 15) {          // On déclare ici 2 param. par défaut
     
-    let total = nbA + nbB;
-    // console.log(total);      // Affiche un resultat.
-    return total;               // La fct. RETOURNE une valeur.
-    console.log('test');        // NB: Tout le code écrit après return; ne sera pas exécuté.
-
+    let total = nbGateaux * (nbPreparation + nbCuisson);
+    return total;
+    
 }
 
-function division(nbA, nbB) {
-    
-    let total = nbA / nbB;
-    return total;  
-                 
-}
+let tChocolat = cuisiner(4);                          // Temps de péparation de 4 gâteaux au chocolat.
+let tFraisier = cuisiner(1, 20);                      // t prép. 1 fraisier. On modifier respectivement les valeurs souhaitées.  
 
-
-let resultatAddition = addition(nb1, nb2);
-let resultatDivision = division(nb1, nb2);
-
-console.log(resultatAddition * resultatDivision);
+console.log(tFraisier + tChocolat);
 
 
 
