@@ -1,24 +1,26 @@
-/*Afficher une information*/
+// /* Fonction sans paramètres */
 
-// alert('Hello World');
-
-
-/*Demander une confirmation à l'utilisateur*/
-
-// if (confirm('Souhaitez-vous confirmer?'))       // Le fait de mettre if suivi du 'confirm', implique d'entrée de jeu que l'on a appuyé sur oui.
-// {
-//     alert('Oui');                               // Affiche oui si on clique sur ok
-// }
-// else
-// {
-//     alert('Annulation');                        // Affiche annulation si on clique sur Annuler
+// function direBonjour() {
+//     alert('Bonjour Ahmed');         // alert(); est une fct. déjà intégrée à javascript. On lui a donné un param.
 // }
 
-
-/*Demander des renseignements à l'utilisateur */
-
-let ageInfo = prompt("Entrez votre âge: ");         // On peut stocker la valeur donnée par l'utilisateur dans une variable qui contiendrait le 'prompt'.
+// direBonjour();
 
 
+/* Fonctions avec paramètres */
 
-alert("Bonjour, vous avez " + ageInfo + " ans!");
+function addition(nbUn, nbDeux) {       // Les param. sont des variables automatiquement déclarées et modifiables.
+    
+    console.log(nbUn + nbDeux)
+
+}
+
+addition(5, 9.5);                       // On doit obligatoirement donner des param. à l'appel d'une fct. qu'on a déclarée avec des param.
+
+
+function direBonjour(prenom) {
+    alert('Bonjour ' + prenom);
+}
+
+direBonjour('Ahmed');
+
