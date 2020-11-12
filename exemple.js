@@ -1,38 +1,64 @@
-// /* Exercice débutant */
+// /* Conditions if else */
 
-// function abracadabra(){
+// let age = prompt("Quel âge avez-vous?");
 
-//     let prenom = prompt("Quel est votre prénom?"),
-//     nom        = prompt("Quel est votre nom?"),
-//     age        = prompt("Quel age avez-vous?");
-
-//     alert("Sapristi! On ne m'avait pas prévenu que c'était vous, " 
-//     + prenom 
-//     +"! Euh je veux dire... Monsieur le grand magicien " 
-//     + nom 
-//     + "! Cela fait déjà " 
-//     + age 
-//     + " ans que vous faites rayonner notre contrée!");
+// if (age < 18) {
+//     alert("Vous n'etes pas majeur")
 // }
 
-// abracadabra();
+// else if (age < 21) {
+//     alert("Vous etes majeur en france")
+// }
+
+// else {
+//     alert("Vous etes majeur partout dans le monde")
+// }
 
 
+/* Switch */
 
-/* Exercice avancé */
+// let article = "chocolat";
+
+// switch (article) {                      
+
+//     case "T-shirt":
+//     case "Pantalon":
+//     case "Veste":
+//         console.log("Ceci est un vêtement.");
+//         break;
+    
+//     case "Chaussure":
+//     case "Sac":
+//         console.log("Ceci est de la maroquinerie.");
+//         break;
+    
+//     default:
+//         console.log("Ceci n'est ni un vêtement ni de la maroquinerie.")
+
+// }
 
 
+/* Plusieurs Conditions et valeurs par défaut des var.*/
 
-function calculerIMC(taille, poids) {
+let gareDepart = "Campiègne";
+let gareArrivée = prompt("Où souhaitez-vous aller?") || "Gare du Nord"; // Valeur par défaut, si l'utilisateur de choisit aucune gare.
+let chauffeur = "Alfred";
 
-    let imc = poids / Math.pow((taille/100), 2);
-    return imc;
+if ((gareDepart != "" || gareArrivée != "") && chauffeur != "") {
+    alert("Le train va démarrer à destination de " + gareArrivée + ".");
+
+}
+else {
+    alert("Le train ne peut pas démarrer.");
 }
 
-let poids = prompt("Quel est votre poids?");
-let taille = prompt("Quelle taille faites-vous? (en cm)");
+// /* Conditions ternaires */
 
-let votreIMC = calculerIMC(taille, poids);
 
-alert("Votre IMC est de: " + votreIMC + "!");
+// let x = 5;
+
+// [x > 3] ? [console.log("x est supérieur à 3")] : [console.log("x est inférieur à 3")];
+
+
+
 
