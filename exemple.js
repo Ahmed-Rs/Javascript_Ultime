@@ -1,64 +1,66 @@
-// /* Conditions if else */
+/* Les Boucles */
 
-// let age = prompt("Quel âge avez-vous?");
 
-// if (age < 18) {
-//     alert("Vous n'etes pas majeur")
-// }
+// // While
 
-// else if (age < 21) {
-//     alert("Vous etes majeur en france")
-// }
+// let i = 1;
 
-// else {
-//     alert("Vous etes majeur partout dans le monde")
+// while (i < 7) {
+//     console.log("ligne: " + i );
+//     i++;
 // }
 
 
-/* Switch */
+// // Do While
 
-// let article = "chocolat";
-
-// switch (article) {                      
-
-//     case "T-shirt":
-//     case "Pantalon":
-//     case "Veste":
-//         console.log("Ceci est un vêtement.");
-//         break;
+// do {
     
-//     case "Chaussure":
-//     case "Sac":
-//         console.log("Ceci est de la maroquinerie.");
-//         break;
-    
-//     default:
-//         console.log("Ceci n'est ni un vêtement ni de la maroquinerie.")
+//     var prenom = prompt("Quel est votre prénom?"); // En utilisant vr au lieu de let, on déclare ici une variable globale malgré qu'on ait fait cela à l'intérieur de la boucle.
 
+// } while (prenom == "" || prenom == null);
+
+// alert("Bonjour " + prenom);
+
+
+
+// // Boucles For
+
+// for (let i = 1; i < 8; i++) {
+   
+//     console.log("Ligne: " + i);
 // }
 
 
-/* Plusieurs Conditions et valeurs par défaut des var.*/
+// Break et continue
 
-let gareDepart = "Campiègne";
-let gareArrivée = prompt("Où souhaitez-vous aller?") || "Gare du Nord"; // Valeur par défaut, si l'utilisateur de choisit aucune gare.
-let chauffeur = "Alfred";
+// let i = 0;
 
-if ((gareDepart != "" || gareArrivée != "") && chauffeur != "") {
-    alert("Le train va démarrer à destination de " + gareArrivée + ".");
+// while (i < 7) {
+
+//     if (i == 4) {
+//         break;                          // Le break sert à arrêter la boucle au niveau 4.
+//     }
+
+//     console.log("Ligne: " + i);
+//     i++;
+    
+// }
+
+
+let j = 0;
+
+while (j < 7) {
+
+    if (j == 4) {
+        j++;                            // Le j++ sert à faire passer la valeur du j à 5, et la boucle ne reste plus bloquée dans le 2e if. En revanche, la valeur j == 4 ne saffichera pas dans la console car elle a été sautée.
+        continue;                       // Si on met le "continue" sans l'incrémentation, le 2e if s'exécute à l'infini en lisant le "continue", car il reste bloqué la valeur autorisée '4'.
+    }
+
+    console.log("Ligne: " + j);
+
+    j++;
 
 }
-else {
-    alert("Le train ne peut pas démarrer.");
-}
-
-// /* Conditions ternaires */
-
-
-// let x = 5;
-
-// [x > 3] ? [console.log("x est supérieur à 3")] : [console.log("x est inférieur à 3")];
-
 
 
 
