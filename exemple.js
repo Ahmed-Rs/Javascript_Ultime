@@ -1,66 +1,45 @@
-/* Les Boucles */
 
+try {
 
-// // While
+    let ustencile = prompt("Choisissez votre instrument: couteau, cuillère, fourchette.");
+    let utilité;
+    switch (ustencile){
+        case "couteau":
+            utilité = 40;                       // Le try s'exécute, et en cas d'erreur, c'est le catch qui s'exécute.
+            break;                              // On crée et définit une situation d'erreur qui fera s'exécuter le catch.
+        case "cuillère":                        // Ici on a utilisé le switch et définit des valeur pour lesquelles il ya erreur.
+            utilité = 50;                       // On utilise le 'throw new Error' pour renvoyer directement vers le catch.
+            break;                              // Dans le catch, le alert fera en sorte de mettre le contenu de l'Error dans une boîte de dialogue.
+        case "fourchette":                      // On aurait pu aussi le mettre dans la console grâce à: console.log(erreur)
+            utilité = 30;
+            break;
 
-// let i = 1;
-
-// while (i < 7) {
-//     console.log("ligne: " + i );
-//     i++;
-// }
-
-
-// // Do While
-
-// do {
-    
-//     var prenom = prompt("Quel est votre prénom?"); // En utilisant vr au lieu de let, on déclare ici une variable globale malgré qu'on ait fait cela à l'intérieur de la boucle.
-
-// } while (prenom == "" || prenom == null);
-
-// alert("Bonjour " + prenom);
-
-
-
-// // Boucles For
-
-// for (let i = 1; i < 8; i++) {
-   
-//     console.log("Ligne: " + i);
-// }
-
-
-// Break et continue
-
-// let i = 0;
-
-// while (i < 7) {
-
-//     if (i == 4) {
-//         break;                          // Le break sert à arrêter la boucle au niveau 4.
-//     }
-
-//     console.log("Ligne: " + i);
-//     i++;
-    
-// }
-
-
-let j = 0;
-
-while (j < 7) {
-
-    if (j == 4) {
-        j++;                            // Le j++ sert à faire passer la valeur du j à 5, et la boucle ne reste plus bloquée dans le 2e if. En revanche, la valeur j == 4 ne saffichera pas dans la console car elle a été sautée.
-        continue;                       // Si on met le "continue" sans l'incrémentation, le 2e if s'exécute à l'infini en lisant le "continue", car il reste bloqué la valeur autorisée '4'.
+        default: 
+            throw new Error("Vous ne pouvez pas choisir cet instrument.");
     }
 
-    console.log("Ligne: " + j);
+    alert("Vous avez choisi l'ustencile " + ustencile + " (utilité: " + utilité + ").");
 
-    j++;
+} 
 
+catch (erreur) {
+
+    alert(erreur.stack);
+    
 }
+
+finally {
+    alert("Fin du programme.");         // Le finally, sert à faire s'exécuter un code à coups sûr.
+}
+
+
+
+
+
+
+
+
+
 
 
 
