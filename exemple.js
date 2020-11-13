@@ -20,36 +20,15 @@ let monTableauAssociatif = {
     'poste': 'fighter'
 };
 
-// Retirer des éléments (pop/shift)
 
-monTableau.shift();       // Retire le premier élm.
-monTableau.pop();         // Retire le dernier élm.
-//console.log(monTableau);
+// console.log(monTableau.join(" / "));
 
-
-// Retirer d'un tableau 2D
-
-monTableau2D[0].shift();  // Retire le premier élm. du premier tableau
-//console.log(monTableau2D);
+// Le join(); Nous renvoie toute la liste sélectionnée sous forme de chaîne de caractères.
+// Il met des séparateurs personnalisés à cette dernière.
+console.log(monTableau2D.join(" / "));
 
 
-// Retirer d'un tableau associatif
-
-delete(monTableauAssociatif.poste);
-//console.log(monTableauAssociatif);
-
-
-// Renvoyer un index
-
-console.log(monTableau.indexOf('Pomme'));   // Nous affiche 0, car on a retiré Banane avec le monTableau.shift();
-
-
-
-
-
-
-
-
+console.log(monTableau2D[1].join(" / "));
 
 
 
