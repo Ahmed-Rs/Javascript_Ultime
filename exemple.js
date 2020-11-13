@@ -39,6 +39,10 @@ delete(monTableauAssociatif.poste);
 //console.log(monTableauAssociatif);
 
 
+// Renvoyer un index
+
+console.log(monTableau.indexOf('Pomme'));   // Nous affiche 0, car on a retiré Banane avec le monTableau.shift();
+
 
 
 
