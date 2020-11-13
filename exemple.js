@@ -1,6 +1,5 @@
 /*Boucles pour tableaux*/
 
-
 let panier = ['Banane', 'Fraise', 'Poire'];
 
 // La boucle 'for of' renvoie dans sa variable la valeur de son élément. 
