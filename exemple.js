@@ -1,33 +1,41 @@
-/* Récursivité */
+
+/* Les Tableaux */
+
+// Tableau 2D
+
+let monTableau2D = [        
+    ['Khabib', 'Georges', 'Islam'],
+    ['Nurma', 'SP', 'Makha']
+];
 
 
-// function timer(secondes) {
+//Tableau associatif
 
-//     if (secondes > 0) {                     // Une fct. qui s'appelle elle-même.
+let monTableauAssociatif = {
+    'prenom': 'Khabib',         // On associe un nom à chaque élément.
+    'nom': 'Nurma',
+    'poste': 'fighter'
+};
 
-//         console.log(secondes);
-//         timer(secondes - 1);
-        
-//     } else {
-//         console.log(secondes);
-//     }
-    
-// }
-
-// timer(10);
+// Accéder à un élément
 
 
-function somme(nombre) {
+// console.log(monTableau2D[0][1]);
 
-    if (nombre == 1) {              // Valeur 1 d'arrivée
-        return 1;
-    }
+// console.log(monTableauAssociatif["prenom"]);
 
-    return nombre + somme(nombre - 1); // La fonction s'execute en boucle: Elle dépose un 'nombre' et ensuite va se réexécuter jusqu'à ce que nombre == 1.
-}
- 
-console.log(somme(5));
+// // Accéder au dernier élément
+
+// console.log(monTableau2D[monTableau2D.length - 1]); // On fait .length-1 car on commence à compter à partir de 0.
 
 
+// Ajouter un élément(push/unshift)
 
+monTableau2D[1].unshift('test1');       // Ajout à la fin de la liste.
+monTableau2D[1].push('test2');          // Ajout au début de la liste.
+// console.log(monTableau2D);
 
+// Ajouter dans un tableau associatif
+
+monTableauAssociatif['nationalité'] = 'Russe';
+console.log(monTableauAssociatif);
