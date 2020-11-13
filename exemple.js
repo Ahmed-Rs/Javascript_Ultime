@@ -1,16 +1,18 @@
 /*Boucles pour tableaux*/
 
-let panier = ['Banane', 'Fraise', 'Poire'];
+let listeDePays = ['Algerie', 'Belgique', 'Japon', 'Maroc'];
 
-// La boucle 'for of' renvoie dans sa variable la valeur de son élément. 
+// for (const pays of listeDePays) {
+//     console.log(pays);
+// }
 
-for (const fruit of panier) {
 
-    console.log(panier.indexOf(fruit)); // On affiche dans la console l'indexe des éléments du tableau à mesure qu'on le parcourt
-}
+// listeDePays.forEach(function(pays){      // On utilise ici une fonction anonyme.
+//     console.log(pays);
+// });
 
-console.log(panier);
 
+listeDePays.forEach(pays => console.log(pays));   // On efface la fct. et on utilise une fonction fléchée. Nouveauté javascript.
 
 
 
