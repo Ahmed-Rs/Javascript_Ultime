@@ -1,6 +1,9 @@
 
 /* Les Tableaux */
 
+let monTableau = ['Banane', 'Pomme', 'Framboise', 'Abricot'];
+
+
 // Tableau 2D
 
 let monTableau2D = [        
@@ -17,25 +20,32 @@ let monTableauAssociatif = {
     'poste': 'fighter'
 };
 
-// Accéder à un élément
+// Retirer des éléments (pop/shift)
+
+monTableau.shift();       // Retire le premier élm.
+monTableau.pop();         // Retire le dernier élm.
+//console.log(monTableau);
 
 
-// console.log(monTableau2D[0][1]);
+// Retirer d'un tableau 2D
 
-// console.log(monTableauAssociatif["prenom"]);
-
-// // Accéder au dernier élément
-
-// console.log(monTableau2D[monTableau2D.length - 1]); // On fait .length-1 car on commence à compter à partir de 0.
+monTableau2D[0].shift();  // Retire le premier élm. du premier tableau
+//console.log(monTableau2D);
 
 
-// Ajouter un élément(push/unshift)
+// Retirer d'un tableau associatif
 
-monTableau2D[1].unshift('test1');       // Ajout à la fin de la liste.
-monTableau2D[1].push('test2');          // Ajout au début de la liste.
-// console.log(monTableau2D);
+delete(monTableauAssociatif.poste);
+//console.log(monTableauAssociatif);
 
-// Ajouter dans un tableau associatif
 
-monTableauAssociatif['nationalité'] = 'Russe';
-console.log(monTableauAssociatif);
+
+
+
+
+
+
+
+
+
+
