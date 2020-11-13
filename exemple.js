@@ -1,39 +1,36 @@
-/* Concaténer un tableau associatif */
+/* Fonctions fléchées */
 
-
-let monTableauAssociatif = {
-    'prenom' : 'Mark',
-    'nom' : 'Zuckerberg',
-    'poste' : 'PDG de Facebook'
-}
-
-// let chaine = '';
-
-// for (const valeur in monTableauAssociatif) {
-
-//     chaine += (valeur + ' : ' + monTableauAssociatif[valeur] + '\n');
-    
+// let maFonction = function () {
+//     console.log('test');    
 // }
-// console.log(chaine);
 
 
-function concatener(tableau) {
+// let maFonction = () => {            //On met les param. dans les parenthèses s'il y'en a plus d'un, mais il n'y en a qu'un seul, on ne met pas de prenthèses.
+//     console.log('test');
+// }
 
-    let chaine = '';
+let maFonction = () => console.log('test'); // Condensé de la fct. anonyme en une ligne
 
-    for (const valeur in tableau) {
-
-        chaine += (valeur + ' : ' + tableau[valeur] + '\n');
-    
-    }
-
-    console.log(chaine);
-
-    
-}
+maFonction();
 
 
-concatener(monTableauAssociatif);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
