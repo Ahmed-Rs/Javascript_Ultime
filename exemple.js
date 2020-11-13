@@ -20,15 +20,30 @@ let monTableauAssociatif = {
     'poste': 'fighter'
 };
 
+// Splice();
 
-// console.log(monTableau.join(" / "));
+// Avec Tableau 1D
 
-// Le join(); Nous renvoie toute la liste sélectionnée sous forme de chaîne de caractères.
-// Il met des séparateurs personnalisés à cette dernière.
-console.log(monTableau2D.join(" / "));
+monTableau.splice(0, 2, 'Mangue', 'Papaye');  // Le premier indice désigne l'emplacement dans l'array, le second, désigne le nbr d'éléments à supprimer à compter de cet emplacement(inclus), le troisième désigne les éléments à incorporer.
+console.log(monTableau);                      // Si on met splice(0, 0, 'Mangue', 'Papaye'); aucun élément ne sera supprimer car dans l'indice n°2, on a mis un 0, il commence à supprimer à partir de 1.
+
+// Avec Tableau 2D
 
 
-console.log(monTableau2D[1].join(" / "));
+//monTableau2D.splice(0, 1);          // Ici il supprime le premier sous-array, car on a mis 0, 1.
+//monTableau2D[1].splice(1,1);         // Ici il supprime le deuxième élément du sous deuxième sous-array.
+
+
+monTableau2D.splice(2, 0, ['40', '50', '60']);  // Ici on ajoute un array.
+
+console.log(monTableau2D);
+
+
+
+
+
+
+
 
 
 
