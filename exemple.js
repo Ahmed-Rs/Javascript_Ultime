@@ -1,24 +1,31 @@
-/* WeakMap */
+/*REST parameter */
+
+// L'ajout des 3 points avant la variable de la fonction permet de lui indiquer qu'elle pourra prendre, sans limite, toutes les variables qu'on lui assignera lors de son appel.
 
 
-// Le WeakMap prend en clé un objet, et en valeur n'importe quel type de donnée
+function addition(...nombre){
 
-let voitures = new WeakMap();
+    let resultat = 0;
+    
+    nombre.forEach( nombre => {
+        resultat += nombre;
 
-let index = {
-    id : 1
+    });
+
+    console.log(resultat);
+
 }
 
-let voitureA = {
-    constructeur: 'Tesla',
-    modèle: 'F5'
-}
+
+addition(25, 67, 32, 5);
 
 
-voitures.set(index, voitureA);
-// voitures.delete(index);     // Retirer un élément.
 
-console.log(voitures);
+
+
+
+
+
 
 
 
