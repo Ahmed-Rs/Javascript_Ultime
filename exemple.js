@@ -1,32 +1,59 @@
-/* L'objet WeakSet */
-
-// Le WeakSet, n'accèpte que les Objets (propriété, valeur)
+/* WeakMap */
 
 
-// let voitures = new WeakSet();
+// Le WeakMap prend en clé un objet, et en valeur n'importe quel type de donnée
 
+let voitures = new WeakMap();
+
+let index = {
+    id : 1
+}
 
 let voitureA = {
-    marque: 'Mercedes',
-    modele: 'SLK Gtr'
+    constructeur: 'Tesla',
+    modèle: 'F5'
 }
 
 
-let voitureB = {
-    marque: 'BMW',
-    modele: 'Z3'
-}
-
-
-// voitures.add(voitureA); // On ajoute un objet
-// voitures.add(voitureB);
-// voitures.delete(voitureA); // On retire un objet
-// Pour ne pas avoir à écrire plusieur 'add()', on peut déclarer le weakSet après les objets qu'il contiendra, afin de les lui faire passer en arguments.
-
-
-let voitures = new WeakSet([voitureA, voitureB]);
-
+voitures.set(index, voitureA);
+// voitures.delete(index);     // Retirer un élément.
 
 console.log(voitures);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
