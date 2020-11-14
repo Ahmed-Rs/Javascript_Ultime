@@ -1,46 +1,29 @@
-/*REST parameter */
+/*L'opérateur de décomposition / spread operator */
 
-// L'ajout des 3 points avant la variable de la fonction permet de lui indiquer qu'elle pourra prendre, sans limite, toutes les variables qu'on lui assignera lors de son appel.
+// Exemple 1: fusionner plusieurs tableaux
+let fruits = ['fraise', 'banane', 'poire'];
+let aliments = ['chocolat', 'sucre', 'lait', ...fruits];
 
-
-function addition(...nombre){
-
-    let resultat = 0;
-    
-    nombre.forEach( nombre => {
-        resultat += nombre;
-
-    });
-
-    console.log(resultat);
-
-}
+console.log(aliments);
 
 
-addition(25, 67, 32, 5);
+// Exemple 2: découper une chaîne de caractères en plusieurs éléments
+
+let phrase = 'Bonjour !';
+let phraseTableau = [...phrase];
+
+console.log(phraseTableau);
 
 
+// Exemple 3: sélectionner un élément, et stocker les autres dans une varaible
 
+let devises = ['dollar', 'euro', 'yen'];
 
+let [premiereDevise, ...autres] = devises;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(devises);
+console.log(premiereDevise);
+console.log(autres);
 
 
 
