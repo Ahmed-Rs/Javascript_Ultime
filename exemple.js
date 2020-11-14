@@ -1,33 +1,33 @@
-/* L'objet Set */
-
-// Les set ne renvoient pas de valeurs doubles, et on peut y stocker tous types de données; entiers, strings, arrays...
+/* L'objet Map */
 
 
-let nombres = [10, 39, 69, 39, 19, 10];
+// let monMap = new Map([
+//     ['prenom' , 'John'],
+//     ['nom'    , 'Neeson']
+// ]);
 
-// let monSet = new Set(nombres);
-let monSet = new Set(nombres);
+// monMap.set('poste', 'Acteur');      //  Ajouter une clé , valeur
+// monMap.delete('nom');               // Supprimer une clé, valeur
 
-
-
-monSet.add(47);
-monSet.delete(69);
-
-console.log(monSet);
-console.log('La taille de mon Set : ' + monSet.size);
+// console.log(monMap);
 
 
 
+let utilisateurs = new Map();
 
 
+utilisateurs.set('Mark Zukerberg', {        // Ici on entre une clé, valeurs, avec plusieurs valeurs, comme un tableau associatif.
+    email: 'mark@gmail',
+    poste: 'PDG',
+});
 
 
+utilisateurs.set('Bill Gates', {           // On recommence l'opération pour entrer un nouvel utilisateur.
+    email: 'bill.com',
+    poste: 'PDG',
+});
 
-
-
-
-
-
+console.log(utilisateurs);
 
 
 
