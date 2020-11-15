@@ -1,29 +1,34 @@
-/*L'opérateur de décomposition / spread operator */
+/* BOM */
 
-// Exemple 1: fusionner plusieurs tableaux
-let fruits = ['fraise', 'banane', 'poire'];
-let aliments = ['chocolat', 'sucre', 'lait', ...fruits];
+// L'objet principal: Window
 
-console.log(aliments);
-
-
-// Exemple 2: découper une chaîne de caractères en plusieurs éléments
-
-let phrase = 'Bonjour !';
-let phraseTableau = [...phrase];
-
-console.log(phraseTableau);
+// Ouvrir une fenêtre
+window.open('https://believemy.com');
 
 
-// Exemple 3: sélectionner un élément, et stocker les autres dans une varaible
+// Redimensionner une fenêtre
 
-let devises = ['dollar', 'euro', 'yen'];
+let fenetre = 
+window.open('https://believemy.com', '', 'width=900', 'height=700');
 
-let [premiereDevise, ...autres] = devises;
 
-console.log(devises);
-console.log(premiereDevise);
-console.log(autres);
+function resize() {
+    fenetre.resizeTo(700, 470);
+}
+
+resize();
+
+
+// Fermer une fenêtre
+
+// function resize(){
+//     fenetre.close();
+// }
+
+// close();
+
+
+
 
 
 
