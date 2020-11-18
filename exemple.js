@@ -1,51 +1,63 @@
-/* BOM */
+/* Programmation Orientée Objet */
 
-/* L'objet HISTORY */
-
-
-// Page précédente
-history.back();
-
-// Page suivante
-history.forward();
+// Constructeurs
 
 
+// let mark = {
+//     prenom: "Mark",
+//     nom: "Zuckerberg",
+//     email: "mark.com",
+    
+//     sePresenter : function(){
+//         console.log("Bonjour, je m'appelle" + mark.prenom);
+//     }
+
+// }
+
+// console.log(mark);
+
+function Utilisateur(prenom, nom, email) {      // On initilialise une fct. constructor qui prend en paramètres des identifiants
+    this.prenom = prenom;
+    this.nom    = nom;
+    this.email  = email;
+
+    this.sePresenter = () => {                 // On ajoute une fct. anonyme dans une nouvelle propriété.
+        console.log("Bonjour je m'appelle " + this.prenom + " " + this.nom + " et vous pouvez me joindre à l'adresse: "+ this.email + ".");
+    }
+}
 
 
-/* L'objet LOCATION */
+var mark = new Utilisateur("Mark", "Zuckerberg", "mark.com");
+var bill = new Utilisateur("Bill", "Gates", "bill.com");
+// mark.sePresenter();        // Ne pas oublier d'initialiser la fct. à l'intérieur de l'objet.
 
-// L'objet Location a pour fonction de nous donner des informations relatives aux adresses, pour, par exemple, rediriger l'utilisateur.
-// Voici une petite démonstration de quelques fonctions bien utiles que propose cet objet.
+mark.poste = "PDG de Facebook";  // On peut rajouter des éléments personnalisés à notre Objet mark.
 
-// Recharger une page
-location.reload();
+// console.log(mark);
 
-// Rediriger
-location.href();
+// console.log(bill);
+
+// Utilisons un Objet comme paramètre dans un autre Objet
+
+function Logement(type, annee, placeDeParking, propriétaire) {
+    this.type           = type;
+    this.annee          = annee;
+    this.placeDeParking = placeDeParking;
+    this.propriétaire   = propriétaire;
+}
+
+var appartementZ = new Logement("appartement", "2020", true, mark); // mark est un Objet
+
+console.log(appartementZ.propriétaire.nom);     // On appelle la propriété nom, dans l'Objet Utilisateur(mark) contenu dans l'Objet Logement(appartementZ)
+
+console.log(appartementZ);
 
 
-/* L'objet SCREEN */
 
-// L'objet Screen a pour fonction de nous donner des informations relatives aux écrans.
-// Voici une petite démonstration de quelques fonctions bien utiles que propose cet objet.
 
-// Largeur de l'écran
-screen.availWidth;
 
-// Hauteur de l'écran
-screen.availHeight;
 
-// Résolution de l'écran
-screen.pixelDepth;
 
-// Syntaxe
-
-objetEcran = window.screen;
-
-/* L'objet DOCUMENT */
-
-// C'est l'objet qui permet de modifier le HTML de notre site
-// Lorsque l'utilisateur va cliquer sur un boutton, appuyer sur touche, envoyer un formulaire, etc...
 
 
 
