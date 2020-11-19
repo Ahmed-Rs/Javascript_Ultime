@@ -1,66 +1,46 @@
 /* Programmation Orientée Objet */
 
-// Comprendre l'héritage
+// Bind, Call, Apply
+
+// Call et Apply permettent d'invoquer immédiatement une fonction
 
 
-function Animal(nombreDePattes, poids) {
-    this.nombreDePattes = nombreDePattes;
-    this.poids         = poids;
-}
-Animal.prototype.presentation = function () {
-    console.log("Cet animal possède "+ this.nombreDePattes + "pattes" + " et fait "+ this.poids + " Kg");
-}
+let gandalf = { titre: "Magicien"}      // Objet littéral
 
+// La fct direBonjour() va utiliser this.titre grâce à l'appel de l'objet gandalf.
 
-function Oiseau(nombreDePattes, poids, longueurDesAiles) {      // La fct. call() permet d'appeler une fct. constructeur: en 1er param. (this) on donne l'objet actuel, ensuite on donne les arg. de son constructeur(Animal)
-    Animal.call(this, nombreDePattes, poids);                   // On insère dans la fct. Oiseau les mêmes param. que la fct. appelée, en plus de ses param. d'origine.
-    this.longueurDesAiles = longueurDesAiles;
+function direBonjour(arme, degats) {
+    console.log("Bonjour " + this.titre + ", vous possédez " + arme + " qui donne " + degats + " points de dégats.");
 }
 
+// Avec call, on appelle l'objet gandalf et les autres arguments un à un.
+direBonjour.call(gandalf, "un bâton", 75);
 
-function Mammifere(nombreDePattes, poids, typeDePoils) {
-    Animal.call(this, nombreDePattes,poids);
-    this.typeDePoils = typeDePoils;
+// Avec apply, on appelle aussi l'objet gandalf, mais les autres arguments seront appelés comme un tableau.
+direBonjour.apply(gandalf, ["un bâton", 75]);
+
+
+//Bind
+// Objectif
+
+this.valeur = "Window"; // Pour tous les navigateurs, this. écrit en dehors d'une fonction ou d'un objet vaut automatiquement "window" */
+
+
+let monObjet = {
+    valeur: "Objet",
+    getValeur: function () {
+        console.log(this.valeur);
+    }
 }
 
-
-Oiseau.prototype = Object.create(Animal.prototype); // On fait en sorte que le prototype de la fct. Oiseau() soit le même que celui de la fct. Animal(), afin que Oiseau hérite du prototype de Animal(), et donc de la fct. presentation().
-                                                    // Nous avons en quelques sortes inséré la fct. Animal() afin de faire profiter Oiseau() de son prototype et donc de sa méthode presentation();
-// Le fait de changer de prototype fait que l'on ne voit plus le constructor Oiseau() qui est à l'origine de l'objet Oiseau. En effet en redéfinition de notre prototype supprime aussi son contenu antérieur, que l'on doit alors réécrire partiellement au besoin.
-// Il faut le remettre avec le code suivant:
-
-Oiseau.prototype.constructor = Oiseau;
-
-var perroquet = new Oiseau(2, "1 Kg", "Grandes");
-var vache     = new Mammifere(2, "400 Kg", "Cours");
+monObjet.getValeur();   // Ici, le navigateur nous affiche automatiquement la valeur de this.valeur dans le contexte de l'Objet littéral monObjet();
 
 
-console.log(perroquet);
-perroquet.presentation(); // Le navigateur va aller chercher la fct. presentation() dans le prototype de la fct. Oiseau() (puisqu'il en a hérité maintenant).
+let maValeur = monObjet.getValeur; // On stock la fct. getValeur() dans une variable
+maValeur(); // En exécutant cette variable,le nav. nous renvoie "window", car on est dans un contexte hors de la fct. monObjet(). Le this.valeur est celui du contexte global.
 
-
-// console.log(vache);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let maValeurAvecBind = monObjet.getValeur.bind(monObjet);   // Avec bind(), le contexte de 'monObjet.getValeur' est le contexte de l'objet monObjet();
+maValeurAvecBind();                                         // Avec bind, on précise le contexte.
 
 
 
