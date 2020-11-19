@@ -1,53 +1,72 @@
 /* Programmation Orientée Objet */
 
-// Constructeurs
+// Comprendre l'héritage
 
 
-// let mark = {
-//     prenom: "Mark",
-//     nom: "Zuckerberg",
-//     email: "mark.com",
-    
-//     sePresenter : function(){
-//         console.log("Bonjour, je m'appelle" + mark.prenom);
-//     }
-
-// }
-
-// console.log(mark);
-
-function Utilisateur(prenom, nom, email) {      // On initilialise une fct. constructor qui prend en paramètres des identifiants
-    this.prenom = prenom;
-    this.nom    = nom;
-    this.email  = email;
+function Animal(nombreDePattes, poids) {
+    this.nombreDePattes = nombreDePattes;
+    this.poids         = poids;
 }
-
-// On retire la méthode 'sePresenter' de notre constructeur pour la mettre dans le prototype de ce dernier.
-
-Utilisateur.prototype.sePresenter = function() {                 // On ajoute une fct. anonyme dans une nouvelle propriété.
-    console.log("Bonjour je m'appelle " + this.prenom + " " + this.nom + " et vous pouvez me joindre à l'adresse: "+ this.email + ".");
+Animal.prototype.presentation = function () {
+    console.log("Cet animal possède "+ this.nombreDePattes + "pattes" + " et fait "+ this.poids + " Kg");
 }
 
 
-// On crée un Objet
-var mark = new Utilisateur("Mark", "Zuckerberg", "mark.com");
-var bill = new Utilisateur("Bill", "Gates", "bill.com");
-
-console.log(mark);  // On voit que JavaScript ajoute une propriété __proto__ et constructor
-
-mark.sePresenter();  // On rajoute la fct. sePresenter dans le prototype du constructeur Utilisateur, ainsi ils pourront aussi en hériter.
-                     // Bill aussi peut se présenter
+function Oiseau(nombreDePattes, poids, longueurDesAiles) {      // La fct. call() permet d'appeler une fct. constructeur: en 1er param. (this) on donne l'objet actuel, ensuite on donne les arg. de son constructeur(Animal)
+    Animal.call(this, nombreDePattes, poids);                   // On insère dans la fct. Oiseau les mêmes param. que la fct. appelée, en plus de ses param. d'origine.
+    this.longueurDesAiles = longueurDesAiles;
+}
 
 
-/*Créer un objet avec Object(); */
+function Mammifere(nombreDePattes, poids, typeDePoils) {
+    Animal.call(this, nombreDePattes,poids);
+    this.typeDePoils = typeDePoils;
+}
 
-var monObjet = new Object();
-monObjet.titre = "Le titre de l'objet";
 
-// console.log(monObjet);
+Oiseau.prototype = Object.create(Animal.prototype); // On fait en sorte que le prototype de la fct. Oiseau() soit le même que celui de la fct. Animal(), afin que Oiseau hérite du prototype de Animal(), et donc de la fct. presentation().
+                                                    // Nous avons en quelques sortes inséré la fct. Animal() afin de faire profiter Oiseau() de son prototype et donc de sa méthode presentation();
+// Le fait de changer de prototype fait que l'on ne voit plus le constructor Oiseau() qui est à l'origine de l'objet Oiseau. En effet en redéfinition de notre prototype supprime aussi son contenu antérieur, que l'on doit alors réécrire partiellement au besoin.
+// Il faut le remettre avec le code suivant:
 
-// Lorsque le navigateur va lire la fct. sePresenter(); il la cherchera d'abord dans le constructeur, ensuite dans la propriété __proto__ de l'Objet que nous avons créé(mark), puis dans la __proto__ (prototype) du constructeur Objet() (JS) qui a créé notre constructeur,
-// jusqu'à tomber sur la propriété constructor de notre Object() JS; S'il ne trouve pas la fct. sePresenter, il va afficher un message d'erreur. Celà s'appelle remonter ma chaîne des prototypes.
+Oiseau.prototype.constructor = Oiseau;
+
+var perroquet = new Oiseau(2, "1 Kg", "Grandes");
+var vache     = new Mammifere(2, "400 Kg", "Cours");
+
+
+console.log(perroquet);
+perroquet.presentation(); // Le navigateur va aller chercher la fct. presentation() dans le prototype de la fct. Oiseau() (puisqu'il en a hérité maintenant).
+
+
+// console.log(vache);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
