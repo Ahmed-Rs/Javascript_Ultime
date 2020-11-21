@@ -1,106 +1,65 @@
-/* Projet Fight Simulator */
+/* Devenez maîtres du temps */
 
-// Classe Personnage
+// Récupérer la date actuelle
 
-class Personnage {
+// 1er janvier 1970 à minuit UTC (Londres)
 
-    constructor(pseudo, classe, sante, attaque) {
-        this.pseudo  = pseudo;
-        this.classe  = classe;
-        this.sante   = sante;
-        this.attaque = attaque;
-        this.niveau  = 1;
-    }
+let dateActuelle = Date();
+console.log(dateActuelle);  // norme ango-saxonne
 
-    evoluer() {
-        this.niveau++ ;
-        console.log(this.pseudo + " passe au niveau " + this.niveau + "!");
-    }
-
-    verifierSante() {
-        if (this.sante <= 0) {
-            this.sante == 0;
-            console.log(this.pseudo + " a perdu !");
-        }
-        
-    }
-
-    get informations() {
-
-        return this.pseudo + " " + this.classe + " a " + this.sante + " points de vie et est au niveau " + this.niveau + ".";
-    }
-
-}
+let dateEnSecondes = Date.now();
+console.log(dateEnSecondes);
 
 
-// Création de la class Magicien, qui doit hériter de la class Personnage
+// Utiliser l'Objet Date
 
-class Magicien extends Personnage {
-    constructor(pseudo) {
-        
-       super(pseudo, "magicien", 170, 90);
-    }
-
-    attaquer(personnage) {
-        personnage.sante -= this.attaque;
-        console.log(this.pseudo + " attaque " + personnage.pseudo + " en lançant un sort (" + this.attaque + " degâts)");
-        
-        this.evoluer();
-        personnage.verifierSante();
-    }
-
-    
-
-
-    coupSpecial(personnage) {
-        personnage.sante -= this.attaque*5;
-        console.log(this.pseudo + " attaque avec son coup spécial puissance des arcanes " + personnage.pseudo + " (" + this.attaque*5 + " dégâts)");
-        
-        personnage.verifierSante();
-    }
-        
-}
+let datePrecise = new Date(2020, 11, 3, 2);
+console.log(datePrecise);
 
 
 
-// Création de class Guerrier
+// Au-dessus :
+//   - annee (obligatoire)
+//   - mois (obligatoire) qui commence par 0
+
+//   - jour (facultatif) qui commence par 1
+//   - heure (facultatif) qui commence par 0
+//   - minute (facultatif) qui commence par 0
+//   - secondes (facultatif) qui commence par 0
+//   - millisecondes (facultatif) qui commence par 0
 
 
-class Guerrier extends Personnage {
-    constructor(pseudo) {   // On ne demande que le pseudo, vu que c'est la class Personnage qui s'occupe des autres paramètres.
+/* Getter et Setter disponibles pour l'objet Date */
 
-        super(pseudo, "guerrier", 350, 50);
-    }
+let dateEnCours = new Date();
 
-    attaquer(personnage) {
-        personnage.sante -= this.attaque;
-        console.log(this.pseudo + " attaque " + personnage.pseudo + " avec son épée " + this.attaque + " dégâts");
+console.log(dateEnCours.getFullYear()); // Récupère l'année en cours
+console.log(dateEnCours.getDay());      // Récupère le numéro de jour de la semaine en cours, en commencant à compter à partir de dimanche à l'indexe 0.
+console.log(dateEnCours.getDate());     // Récupère le numéro de jour dans le mois en commençant par 1.
 
-        this.evoluer();
-        personnage.verifierSante();
-    }
-
-    coupSpecial(personnage) {
-        personnage.sante -= this.attaque * 5;
-        console.log(this.pseudo + " attaque avec son coup spécial haches de guerre " + personnage.pseudo + this.attaque + " degâts");
-
-        personnage.verifierSante();
-    }
+console.log(dateEnCours.getUTCDate);    // Récupère le jour UTC du même moment.
 
 
 
-}
+
+dateEnCours.setFullYear(2030);          // Les Setter vont nous permettre de modifier les éléments souhaités dans la date en les écrivant simplement de cette manière.
+console.log(dateEnCours.getFullYear);
 
 
-var gandalf = new Magicien('Gandalf');
-var thor    = new Guerrier('Thor');
-console.log(thor.informations);
-console.log(gandalf.informations);
-gandalf.attaquer(thor);
-console.log(thor.informations);
-thor.attaquer(gandalf);
-console.log(gandalf.informations);
-gandalf.coupSpecial(thor);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
