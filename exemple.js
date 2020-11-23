@@ -1,41 +1,83 @@
-/* Utilier les API */
-
-/* Récupérer le prix du Bitcoin (XMLHttp Request) */
+/* Une application météo */
 
 
-const url = 'https://blockchain.info/ticker';
+
+window.onload = function() {
+
+    let ville0 = "Paris";
+    recevoirTemperature(ville0);
+
+    let boutton = document.querySelector("#changer");
+    boutton.addEventListener('click', () => {
+        let villeChoisie = prompt("Veuillez taper le nom d'une ville.");
+        recevoirTemperature(villeChoisie);
+    });
 
 
-// Créer une requête
-function req() {
-    let requete = new XMLHttpRequest();  // Créer un objet
-    requete.open('GET', url);            // Premier param. GET / POST, deuxième param. : url
-    requete.responseType = 'json';       // Nous attendons du JSON
-    requete.send();                      // Nous envoyons notre requête
+    function recevoirTemperature(ville) {   
 
+        const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=fb57a853ce1f2143b146f48c50216831&units=metric';
 
-    // Dès qu'on reçoit une réponse, cette fonction est executée 
-    requete.onload = function() {
-        if (requete.readyState === XMLHttpRequest.DONE) {  // Si l'état de notre requête à ce à quoi on attendait, c-à-d, si notre requête est terminée 
-            if (requete.status === 200) {                  // On vérifie si la requête s'est bien passée, en vérifiant que le ocde d'erreur est 200
-                let reponse = requete.response;            // On stock la réponse
-                let prixEnEuros = reponse.USD.last;        // Créer une variable pour sélectionner ce que l'on souhaite comme information précise dans notre API
-                document.querySelector("#price_label").textContent = prixEnEuros;
-            }
-            else {
-                alert("Un problème est survenu, merci de revenir plutard.");
+        let requete =  new XMLHttpRequest();
+        requete.open('GET', url);
+        requete.responseType = 'json';
+        requete.send();
+
+        requete.onload = function() {
+            if (requete.readyState === XMLHttpRequest.DONE) {
+                if (requete.status === 200) {
+                    let reponse = requete.response;
+                    let temperature = reponse.main.temp;
+                    let ville = reponse.name;
+                    document.querySelector("#ville").textContent = ville;
+                    document.querySelector("#temperature_label").textContent = temperature;
+                    console.log("La température à " + ville + " est " + temperature + " degrés Celcius");
+                }
+                else {
+                    alert('Un problème est survenu, veillez revenir plutard.');
+                }
             }
         }
     }
-    console.log("Prix actualisé");
 
+
+
+
+   
 }
 
-req();
 
-var inter = setInterval("req()", 1000);     // Le prix du Bitcoin s'affiche toute les secondes
 
-clearInterval(inter);       // On stop l'intervalle.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
