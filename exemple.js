@@ -1,34 +1,41 @@
-/* Les cookies */
+/* LocalStorage et SessionStorage */
 
-// Créer un cookie
-document.cookie = 'prenom=John';
-
-// Afficher tous les cookies
-// alert(document.cookie);
-
-// Modifier un cookie
-document.cookie = 'prenom=Mark';
-
-// Supprimer un cookie
-document.cookie = 'prenom=';
-
-// Options
+// LocalStorage = Stocké dans le navigateur même après qu'il soit fermé
+// SessionStorage = Stocké dans le navigateur pendant la session
 
 
-document.cookie = 'prenom=John; path=/admin'; // On précise l'emplacement où notre cookie est accessible. Si on ne précise rien, cela veut dire qu'il est disponible sur l'ensemble de notre site. Ici, il sera disponible sur tous les url qui commencent par /admin, ex: /admin/connexion
-document.cookie = 'prenom=John; path=/admin; domain=believemy.com'; // On précise que ce cookie sera disponible uniquement sur ce site internet
+// Les informations crées avec LocalStorage et SessionStorage ne seront jamais envoyées au serveur, contrairement à celles des cookies 
 
-// Avec expires, on rajoute la date UTC et le nombre de millisecondes qui correspondent à sa durée de vie (ici un an).
-let date = new Date(Date.now() + 31536000000);
-// On est tout de même obligés de convertir la date d'expiration en date UTC
-date = date.toUTCString();
-document.cookie = 'prenom=John; path=/admin; domain=believemy.com; expires' + date;
+// setItem([clé], [valeur]) / getItem[clé] / removeItem[clé]
+// clear() : supprimer tout
+// key([index]) : obtenir la clé située à l'index donné
+// length : obtenir le nombre d'éléments stockés
 
-// Avec max-age, on rajoute uniquement le nbr de millisecondes pour sa durée de vie, à compter de la date UTC
-document.cookie = 'prenom=John; path=/admin; domain=believemy.com; max-age=31536000000';
 
-// On rajoute l'option secure pour que le cookie ne soit utilisé que sur les sites sécurisés https
-document.cookie = 'prenom=John; path=/admin; domain=beliemy.com; max-age= 31536000000; secure';
+if(localStorage.getItem('prenom')) {    // Si l'élément existe déjà
+    document.body.append('Bonjour ' + localStorage.getItem('prenom')); // L'item existe déja donc on y fait simplement appel par localStorage.getItem[clé] et on l'attache a notre page html via body.append()
+}
+else {                              // Sinon
+    let prenom = prompt('Quel est votre prénom?');
+    localStorage.setItem('prenom', prenom);        // Si on avait fait sessionStorage, on perdrait la donnée à la fermeture de la fenêtre
+    document.body.append('Bonjour ' + prenom);
+}
+
+localStorage.clear();   // On supprime la donnée enregistrée, et le navigateur nous redemande le prénom à chaque actualisation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
