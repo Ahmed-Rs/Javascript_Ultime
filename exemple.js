@@ -1,21 +1,8 @@
 /* Utilisons les requêtes asynchrones, Callbacks et Promises */
 
-// Les promesses
-// En cours / Honorée / Rompue
-// Exemple Discord(), discuter en ligne par micro (video)
-
-// const promesse = new Promise((resolve, reject) => {
-//     // Tâches asynchrones
-
-//     // Promesse honorée : resolve()
-
-//     // Promesse rompue : reject()
+// Async et Await
 
 
-
-// });
-
-// On charge le script dans notre code html
 
 // On déclare une fonction qu'on intègre directement dans une promesse grâce au mots clés new Promise
 function chargerScript(script) {
@@ -38,31 +25,36 @@ function chargerScript(script) {
     });
 }
 
-// // On déclare une constante qui contiendra notre fct. et la promesse
-// const promesse = chargerScript('test.js');
+// On utilise la fct ci-dessus en mode async / await
 
-// En passant le curseur au dessus de la const. promesse, il s'affiche qu'elle contient un objet de Promise, soit resolve ou reject. Affichons le:
+async function resultat() {
+    try {
+        const scriptA = await chargerScript('test.js');
+        console.log(scriptA);
+        const scriptB = await chargerScript('autre.js');
+        console.log(scriptB);
+    } catch (error) {
+        console.log(error);
+        document.head.lastChild.remove();   // En cas d'erreur, on demande à enlever le dernier élément de <head> qui sera l'élément associé à l'erreur, ici, autre.js; car sinon il est ajouté automatiquement.
+    }
+}
 
-// // Ici le then() signifie, une fois que la fct. est terminée
-// promesse.then(
-//     function (result) { // Ici le code renvoie le resolve()
-//         console.log(result);
-//     },
-//     function (error) {  // Ici le code renvoie le reject()
-//         console.log(error);
-//     }
-// );
-
-
-
-// Ici on fait plus simple, on utilise le catch pour que le code renvoie l'erreur en cas de problème dans l'exécution du code.
-chargerScript('test.js')    // Ici on appelle notre fct. et une fois que c'est terminé, s'il ya une erreur,
-.catch(console.log);        // On fait un try catch, grâce à la promesse qu'il y'a à l'intérieur de la fct. chargerScript()
+resultat();
 
 
+// async function direBonjour() {      // Mettre async avant une fct. lui fait return automatiquement une promesse, comme dans le chapitre pécédent.
 
+//     const promesse = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('Promesse tenue !'), 3000);            // Si la fct. se passe bien, la fct. resolve sera appelée au bout de 3s.
+//     });
 
+//     let resultat = await promesse;  // Le await nous permet de renvoyer le résultat du déroulement de la fct. directement dans la fct. et non en dehors comme précédemment.
 
+//     console.log(resultat);          // On affiche le resultat du déroulement de la fct.
+
+//   }
+
+//   direBonjour();
 
 
 
