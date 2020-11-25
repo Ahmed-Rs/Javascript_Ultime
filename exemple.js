@@ -1,60 +1,62 @@
-/* Utilisons les requêtes asynchrones, Callbacks et Promises */
+/* Les cookies */
 
-// Async et Await
+// Créer un cookie
+document.cookie = 'prenom=John';
 
+// Afficher tous les cookies
+// alert(document.cookie);
 
+// Modifier un cookie
+document.cookie = 'prenom=Mark';
 
-// On déclare une fonction qu'on intègre directement dans une promesse grâce au mots clés new Promise
-function chargerScript(script) {
-    return new Promise((resolve, reject) => {
+// Supprimer un cookie
+document.cookie = 'prenom=';
 
-        // Créer un élément
-        let element = document.createElement('script');
-        // On ajoute le src
-        element.src = script;
-        // On attache l'élément à notre page html, dans le <head>
-         document.head.append(element);
-
-        // Deux possibilités:
-        // resolve()    // Si la page se charge et que element est bien <head>, la fct. resolve() est appellée.
-        element.onload = () => resolve('Fichier ' + script + ' a été chargé.');
-
-        // reject()
-        element.onerror = () => reject(new Error('Opération impossible pour le script ' + script));
-
-    });
-}
-
-// On utilise la fct ci-dessus en mode async / await
-
-async function resultat() {
-    try {
-        const scriptA = await chargerScript('test.js');
-        console.log(scriptA);
-        const scriptB = await chargerScript('autre.js');
-        console.log(scriptB);
-    } catch (error) {
-        console.log(error);
-        document.head.lastChild.remove();   // En cas d'erreur, on demande à enlever le dernier élément de <head> qui sera l'élément associé à l'erreur, ici, autre.js; car sinon il est ajouté automatiquement.
-    }
-}
-
-resultat();
+// Options
 
 
-// async function direBonjour() {      // Mettre async avant une fct. lui fait return automatiquement une promesse, comme dans le chapitre pécédent.
+document.cookie = 'prenom=John; path=/admin'; // On précise l'emplacement où notre cookie est accessible. Si on ne précise rien, cela veut dire qu'il est disponible sur l'ensemble de notre site. Ici, il sera disponible sur tous les url qui commencent par /admin, ex: /admin/connexion
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com'; // On précise que ce cookie sera disponible uniquement sur ce site internet
 
-//     const promesse = new Promise((resolve, reject) => {
-//         setTimeout(() => resolve('Promesse tenue !'), 3000);            // Si la fct. se passe bien, la fct. resolve sera appelée au bout de 3s.
-//     });
+// Avec expires, on rajoute la date UTC et le nombre de millisecondes qui correspondent à sa durée de vie (ici un an).
+let date = new Date(Date.now() + 31536000000);
+// On est tout de même obligés de convertir la date d'expiration en date UTC
+date = date.toUTCString();
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com; expires' + date;
 
-//     let resultat = await promesse;  // Le await nous permet de renvoyer le résultat du déroulement de la fct. directement dans la fct. et non en dehors comme précédemment.
+// Avec max-age, on rajoute uniquement le nbr de millisecondes pour sa durée de vie, à compter de la date UTC
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com; max-age=31536000000';
 
-//     console.log(resultat);          // On affiche le resultat du déroulement de la fct.
+// On rajoute l'option secure pour que le cookie ne soit utilisé que sur les sites sécurisés https
+document.cookie = 'prenom=John; path=/admin; domain=beliemy.com; max-age= 31536000000; secure';
 
-//   }
 
-//   direBonjour();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
