@@ -1,25 +1,10 @@
 html, body {
-    font-family: arial;
-    min-width: 300px;
-  }
-  
-  button {
-    border: 1px;
-    border-radius: 15px;
-    padding: 15px;
-    cursor: pointer;
-  }
-  
-  * {
-    outline: 0;
-  }
-  
-  .dark {
-    background-color: #112F41;
-    color: #ffffff;
-  }
-  
-  .dark button {
-    background: #144098;
-    color: #fff;
-  }
+  font-family: arial;
+  padding: 15px;
+}
+
+.important {
+  font-size: 1.4em;
+  text-decoration: underline;
+  font-weight: bold;
+}
