@@ -1,23 +1,18 @@
-/* Ajouter et supprmier un élément */
+/* Modifier les attributs d'un élément */
 
 // JavaScript
-document.querySelector('h1').prepend('Oh : ');  // Ajouter un élément avant le contenu. 
-document.querySelector('h1').append(' !');      // Ajouter un élément après le contenu.
+document.querySelector('h1').getAttribute('class'); // Sélectionne un attribut
+// document.querySelector('h1').setAttribute('style', 'text-transform: lowercase');
 document.querySelectorAll('p');
 
 
 
-
 // jQuery                                                                             
-$('h1').prepend('Oh : ');  // Ajouter un élément avant le contenu. 
-$('h1').append(' !');      // Ajouter un élément après le contenu. 
-$('h1').before('<div>Hello !</div>'); // Ajouter un élément html avant le h1.
-$('h1').after('<div>Hello !<div/>');  // Ajouter un élément html après le h1.
-$('p').remove();           // Supprmier un élément.
-
-
-
-
+$('h1').attr('class'); // Sélectionne un attribut, retourne sa valeur.
+$('h1').attr('style', 'text-transform: lowercase'); // Quand on donne les deux paramètres, il ajoute ou modifie l'attribut.
+$('h1').after('<a href="https://wikipedia.com">Wikipedia</a>');
+$('a').attr('href', 'https://believemy.com');
+$('p');
 
 
 
