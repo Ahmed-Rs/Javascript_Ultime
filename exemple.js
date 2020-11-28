@@ -1,36 +1,87 @@
-/* Utiliser le mode strict */
-
-// Le mode strict : début
+/* Application de météo géolocalisée */
 
 
-// Le mode strict détecte les erreurs silencieuses, par ex. ne pas utiliser let ou vas
+window.onload = function() {
+    let villeChoisie;
 
-prenom = "John";
-console.log(prenom);
-"use strict";
+    if("geolocation" in navigator) {
+        navigator.geolocation.watchPosition((position) => {
+            const url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&long=' + position.coords.longitude +'&appid=fb57a853ce1f2143b146f48c50216831&units=metric';
+            console.log(url);
+
+            let requete = new XMLHttpRequest(); // Nous créons un objet qui nous permettra de faire des requêtes
+            requete.open('GET', url); // Nous récupérons juste des données
+            requete.responseType = 'json'; // Nous attendons du JSON
+            requete.send(); // Nous envoyons notre requête
+    
+            // Dès qu'on reçoit une réponse, cette fonction est executée
+            requete.onload = function() {
+                if (requete.readyState === XMLHttpRequest.DONE) {
+                    if (requete.status === 200) {
+                        let reponse = requete.response;
+                        // console.log(reponse);
+                        let temperature = reponse.main.temp;
+                        let ville       = reponse.name;
+                        // console.log(temperature);
+                        document.querySelector('#temperature_label').textContent = temperature;
+                        document.querySelector('#ville').textContent = ville;
+                    }
+                    else {
+                        alert('Un problème est intervenu, merci de revenir plus tard.');
+                    }
+                }
+            }
+        }, erreur, options);
+    }
+    else {
+        villeChoisie = "Paris";
+        recevoirTemperature(villeChoisie);
+    }
 
 
-direBonjour();
-addition(7, 1);
+    var options = {
+        enableHighAccurary: true
+    }
+
+    let changerDeVille = document.querySelector('#changer');
+    changerDeVille.addEventListener('click', () => {
+        villeChoisie = prompt('Quelle ville souhaitez-vous voir ?');
+        recevoirTemperature(villeChoisie);
+    });
+
+    function erreur() {
+        villeChoisie = "Paris";
+        recevoirTemperature(villeChoisie);
+    }
 
 
+    function recevoirTemperature(ville) {
+        const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=fb57a853ce1f2143b146f48c50216831&units=metric';
 
-function direBonjour() { 
-    // "use strict";
-    nom = "Max";
-    console.log(nom);
+        let requete = new XMLHttpRequest(); // Nous créons un objet qui nous permettra de faire des requêtes
+        requete.open('GET', url); // Nous récupérons juste des données
+        requete.responseType = 'json'; // Nous attendons du JSON
+        requete.send(); // Nous envoyons notre requête
+
+        // Dès qu'on reçoit une réponse, cette fonction est executée
+        requete.onload = function() {
+            if (requete.readyState === XMLHttpRequest.DONE) {
+                if (requete.status === 200) {
+                    let reponse = requete.response;
+                    // console.log(reponse);
+                    let temperature = reponse.main.temp;
+                    let ville       = reponse.name;
+                    // console.log(temperature);
+                    document.querySelector('#temperature_label').textContent = temperature;
+                    document.querySelector('#ville').textContent = ville;
+                }
+                else {
+                    alert('Un problème est intervenu, merci de revenir plus tard.');
+                }
+            }
+        }
+    }
 }
-
-
-function addition(nombreA, nombreB) {   // Détection de la ducplication du param.
-    // "use strict";
-    console.log(nombreA + nombreB);
-}
-
-
-
-
-
 
 
 
