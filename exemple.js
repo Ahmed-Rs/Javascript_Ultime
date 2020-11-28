@@ -1,26 +1,58 @@
-/* Créer des modules (import, export) */
+/* Utiliser le mode strict */
 
-// Inscription?  Par exemple la fonctionnalité inscription d'un site
-
-// Attention besoin d'un serveur https pour utiliser les modules
+// Le mode strict : début
 
 
-// Le doosier Modules et le fichier index.js sont tous les deux à la racine de notre serveur.
-// index.js
-import { direBonjour } from './Modules/fichier.js';
+// Le mode strict détecte les erreurs silencieuses, par ex. ne pas utiliser let ou vas
 
-direBonjour("John");
-// On aura dans la console: Bonjour John
+prenom = "John";
+console.log(prenom);
+"use strict";
 
 
-// Dossier modules;  Modules/fichier.js
-export direBonjour(prenom) {            // On utilise export pour autoriser l'export de cette fct.
-    console.log("Bonjour " + prenom);
+direBonjour();
+addition(7, 1);
+
+
+
+function direBonjour() { 
+    // "use strict";
+    nom = "Max";
+    console.log(nom);
 }
 
 
-// On doit préciser dans notre html qu'on utilise des modules pour que le navigateur nous permette d'utiliser un module dans notre code
-<script type="module" src="exemple.js"></script>
+function addition(nombreA, nombreB) {   // Détection de la ducplication du param.
+    // "use strict";
+    console.log(nombreA + nombreB);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
