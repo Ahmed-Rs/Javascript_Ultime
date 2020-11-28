@@ -1,34 +1,26 @@
-/* Ajouter des animations */
+/* Créer des modules (import, export) */
 
-$('h1').hide();
-$('h1').show();
+// Inscription?  Par exemple la fonctionnalité inscription d'un site
 
-//POST
-$('p').click(() => {            
-    // $('h1').toggle();       // toggle(); affiche et cache l'élément à mesure qu'on 'click'
-    // $('h1').fadeToggle();   // fadeToggle(); ici fait la chose et son inverse.
-    // $('h1').slideToggle();
-    // $('h1').animate({        // Avec animate, on ne peut utiliser que des propriétés contenant des valeurs numériques, et on ne peut pas mettre d'unités (px, em...).
-    //     opacity: 0.7,
-    //     margin: 30
-    // });
-    $('h1').slideUp().slideDown().animate({ opacity: .7, margin: 30});
-});
+// Attention besoin d'un serveur https pour utiliser les modules
 
 
+// Le doosier Modules et le fichier index.js sont tous les deux à la racine de notre serveur.
+// index.js
+import { direBonjour } from './Modules/fichier.js';
+
+direBonjour("John");
+// On aura dans la console: Bonjour John
 
 
+// Dossier modules;  Modules/fichier.js
+export direBonjour(prenom) {            // On utilise export pour autoriser l'export de cette fct.
+    console.log("Bonjour " + prenom);
+}
 
 
-
-
-
-
-
-
-
-
-
+// On doit préciser dans notre html qu'on utilise des modules pour que le navigateur nous permette d'utiliser un module dans notre code
+<script type="module" src="exemple.js"></script>
 
 
 
